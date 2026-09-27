@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')).sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: { post, prev: posts[i - 1], next: posts[i + 1] },
+  }));
+}
+const { post, prev, next } = Astro.props;
+const { Content } = await render(post);
+const date = post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+---
+<Base title={post.data.title} description={post.data.excerpt || post.data.title} type="article">
+  <article class="wrap">
+    <header class="post-head">
+      <div class="label"><a href="/blog">Blog</a> · {date}{post.data.categories.length > 0 && <> · {post.data.categories.join(', ')}</>}</div>
+      <h1>{post.data.title}</h1>
+    </header>
+    <div class="prose"><Content /></div>
+    {post.data.tags.length > 0 && <p class="label" style="margin-top:2rem">Tagged: {post.data.tags.join(', ')}</p>}
+    <nav class="post-nav" aria-label="Adjacent posts">
+      <span>{prev && <a href={`/blog/${prev.id}`}>← {prev.data.title}</a>}</span>
+      <span>{next && <a href={`/blog/${next.id}`}>{next.data.title} →</a>}</span>
+    </nav>
+  </article>
+</Base>

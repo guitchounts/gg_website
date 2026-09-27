@@ -1,0 +1,15 @@
+---
+interface Props { article: any; showYear?: boolean }
+const { article, showYear = true } = Astro.props;
+const d = new Date(article.date);
+const when = showYear ? d.getFullYear() : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+---
+<li class="item">
+  <div class="when">{when}</div>
+  <div>
+    <h3><a href={article.url}>{article.title}</a></h3>
+    <p class="meta"><em>{article.venue}</em>{article.issue && <>, {article.issue}</>}</p>
+    {article.dek && <p>{article.dek}</p>}
+    {article.note && <p class="small"><i>{article.note}</i></p>}
+  </div>
+</li>

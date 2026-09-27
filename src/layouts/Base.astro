@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import site from '../data/site.json';
+
+interface Props { title?: string; description?: string; image?: string; type?: 'website' | 'article'; theme?: 'editorial' | 'notebook' | 'retro'; }
+// `theme` locks a page to one theme (e.g. Art stays light); otherwise the OS
+// preference decides (CSS), unless the reader picked one via ?theme=.
+const { title, description = site.description, image = '/images/gg.jpg', type = 'website', theme } = Astro.props;
+const fullTitle = title ? `${title} · ${site.name}` : site.title;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en" data-theme={theme} data-theme-locked={theme ? '' : undefined}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} — Blog`} href="/rss.xml" />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="color-scheme" content={theme ? 'light' : 'light dark'} />
+    <script is:inline>
+      // Theme override: ?theme=editorial|notebook|retro forces a theme (persisted in
+      // localStorage); ?theme=auto clears it and returns to following the OS setting.
+      (function () {
+        try {
+          var html = document.documentElement;
+          var q = new URLSearchParams(location.search).get('theme');
+          if (q === 'auto') localStorage.removeItem('theme');
+          else if (q) localStorage.setItem('theme', q);
+          if (html.hasAttribute('data-theme-locked')) return;
+          var t = localStorage.getItem('theme');
+          if (t && ['editorial', 'notebook', 'retro'].includes(t)) html.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
+    <slot name="head" />
+  </head>
+  <body>
+    <Header />
+    <main><slot /></main>
+    <Footer />
+  </body>
+</html>

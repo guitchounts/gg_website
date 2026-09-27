@@ -1,0 +1,21 @@
+---
+interface Props { paper: any; compact?: boolean }
+const { paper, compact = false } = Astro.props;
+const authors = paper.authors.replace(/Grigori Guitchounts/g, '<b>Grigori Guitchounts</b>');
+---
+<li class="item">
+  <div class="when">{paper.year}</div>
+  <div>
+    <h3><a href={paper.url}>{paper.title}</a></h3>
+    <p class="meta" set:html={`${authors}. <em>${paper.venue}</em>.`} />
+    {!compact && (
+      <>
+        <details><summary>Abstract</summary><p>{paper.abstract}</p></details>
+        <div class="links">
+          <a href={paper.url}>Journal</a>
+          {paper.pdf && <a href={paper.pdf}>PDF</a>}
+        </div>
+      </>
+    )}
+  </div>
+</li>

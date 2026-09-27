@@ -1,0 +1,14 @@
+---
+title: "Runaway Selection in Birds of Paradise"
+date: "2013-01-06"
+categories: ["Science/Philosophy"]
+tags: ["birds of paradise", "courtship dance", "Evolution", "selection"]
+excerpt: "I watched a program on PBS the other night about birds of paradise – exotic birds from New Guinea with elaborate displays. To attract females, males have evolved these intricate feathers and courtship dances and rituals. A Parotia male, for example, will clear out a dancing ground and when a female "
+legacyUrl: "/blog/2013/01/06/runaway-selection-in-birds-of-paradise"
+---
+
+I watched a program on PBS the other night about birds of paradise – exotic birds from New Guinea with elaborate displays. To attract females, males have evolved these intricate feathers and courtship dances and rituals. A Parotia male, for example, will clear out a dancing ground and when a female is in sight, he will puck up feathers around his chest into a sort of collar similar to those of Italian nobility of the Renaissance (or perhaps closer to a ballerina’s skirt) with bright iridescent feathers forming a shield below his neck, the long quills on his head that usually point lazily toward his rear will stick straight up in a semicircle around his head.
+
+The most impressive part is the actual dance: with every feather aroused, he goes into a trance, shaking his head left to right, bouncing up and down on his feet, and encircling his audience, one lucky female who judges the performance and decides if the male is a worthy mate. Such displays by males of hundreds of bird species, each unique and captivating are the result of millions of years of evolution, with each generation ensuring the propagation of the best displays. The best displays, in turn, are supposed to convey fitness – how successful the male’s offspring will be and how good of a father he will be. In tough climates, where food resources are scarce and predatory pressure is fierce, most animals evolve to survive by being the best at finding food and hiding from predators. In New Guinea, where most of the species of Birds of Paradise are found, the birds have for millennia enjoyed rich nutritional resources in the dense rainforest and limited pressure from predators. This easy lifestyle has allowed extravagant features to evolve, features that have nothing to do with actual fitness and in some species would be a handicap in a mano-a-mano situation with a predator.
+
+Like the birds of paradise, we humans have enjoyed a relatively pressure-free evolutionary existence in the past few hundred years. This timeframe is not relevant for macroscopic evolutionary changes, but the idea does make me wonder what kind of runaway selection evolution may endow humans with. Meanwhile, here is a video of the Parotia’s and Superb Bird of Paradise's courtship dances:

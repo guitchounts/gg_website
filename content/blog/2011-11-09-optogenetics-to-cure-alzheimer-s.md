@@ -1,0 +1,13 @@
+---
+title: "Optogenetics to Cure Alzheimer's?"
+date: "2011-11-09"
+categories: ["Perspective"]
+tags: ["Alzheimer's disease", "disease", "methods", "network", "Optogenetics"]
+excerpt: ""
+legacyUrl: "/blog/2011/11/09/optogenetics-to-cure-alzheimers"
+---
+
+Preparing for SfN 2011, I have to give a shout-out to one of the coolest emerging technologies in neuroscience, optogenetics. Optogenetics, as everyone no doubt knows by now, is a method that allows researchers to control the electrical activity of neurons using light. Scientists infect certain types of neurons with an algae transmembrane channel protein that allows the flow of ions into a cell when light of preferred wavelength shines upon it. The method has been described well elsewhere ([Steve Ramirez waxes poetic about it on the Mind the Gap Junction blog](http://static1.squarespace.com/static/5859e85dd2b8571a0a859309/5865edca14fd83ac4f161a93/5865edfd14fd83ac4f161c4b/1483075069379/?format=original)). Optogenetics is an amazing method for many reasons, but mainly because by allowing us to directly activate or silence neurons, it makes it possible to establish causal relationships in neural circuits: if neuron A is hyperactive, the mouse runs around in circles; if A is silenced, perhaps the mouse is unable to run in circles; therefore, activity in neuron A causes the mouse to run in circles.
+This is important because traditional electrophysiological methods allow us to only record activity without manipulating it directly (stimulating electrodes are rather crude spatially), and the methods that did allow us to manipulate activity (i.e. pharmacology or stimulating electrodes) have a myriad of effects that make precise causes of behavior unclear (i.e. does TTX act only on sodium channels? Which types? etc).
+
+As optogenetics becomes more and more refined and widespread, I can't help to wonder what it will do for the most prevalent of neurological diseases. Will this method cure Alzheimer's? How about Parkinson's? Optogenetics promises to show us circuit-level interactions among neurons and perhaps even to nail down the [network effects of particular diseases](http://www.stanford.edu/group/dlab/papers/yizhar%20nature%202011.pdf). But if we're looking to find cures for diseases instead of just fixes, we ought to not forget our molecular biologists and maybe even geneticists. That's not to say that treatments for neurological diseases are worthless! There are, after all, no cures for any brain diseases so far - so anything will be useful. With all this enthusiasm over optogenetics, we have to be honest about its capabilities and limitations.

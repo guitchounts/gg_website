@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import OtmCard from '../components/OtmCard.astro';
+import { getOtmPosts, OTM_URL } from '../lib/substack';
+const posts = await getOtmPosts();
+---
+<Base title="Of Two Minds" description="Of Two Minds is a newsletter about natural and artificial brains by Jesseba Fernando and Grigori Guitchounts.">
+  <div class="wrap">
+    <header class="page-head">
+      <h1>Of Two Minds</h1>
+      <p class="dek">
+        A newsletter about natural and artificial brains, written with <a href="https://www.linkedin.com/in/jesseba-fernando">Jesseba Fernando</a>.
+        Long essays on how neural networks compute, what neuroscience can and cannot tell us about them,
+        and short <i>Annotations</i> on papers we are reading. Posts live on
+        <a href={OTM_URL} class="ext">Substack</a>; this page mirrors the feed.
+      </p>
+      <div class="substack-embed">
+        <iframe src="https://oftwominds.substack.com/embed" title="Subscribe to Of Two Minds" loading="lazy" scrolling="no"></iframe>
+      </div>
+    </header>
+    <ul class="cards">{posts.map((p) => <OtmCard post={p} />)}</ul>
+  </div>
+</Base>

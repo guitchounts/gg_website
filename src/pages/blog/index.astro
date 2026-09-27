@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const byYear = new Map<number, typeof posts>();
+for (const p of posts) { const y = p.data.date.getUTCFullYear(); byYear.set(y, [...(byYear.get(y) ?? []), p]); }
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+---
+<Base title="Blog" description="Archive of Grigori Guitchounts's blog on neuroscience, science policy, and philosophy of mind, 2009–2017.">
+  <div class="wrap">
+    <header class="page-head">
+      <h1>Blog</h1>
+      <p class="dek">An archive. These posts were written between 2009 and 2017, from the end of college through graduate school. Newer writing is on <a href="/of-two-minds">Of Two Minds</a>.</p>
+    </header>
+    {[...byYear.entries()].map(([year, list]) => (
+      <section class="year-group">
+        <span class="label">{year}</span>
+        <ul class="items">
+          {list.map((p) => (
+            <li class="item">
+              <div class="when">{fmt(p.data.date)}</div>
+              <div>
+                <h3><a href={`/blog/${p.id}`}>{p.data.title}</a></h3>
+                {p.data.categories.length > 0 && <p class="meta"><em>{p.data.categories.join(', ')}</em></p>}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</Base>

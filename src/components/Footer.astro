@@ -1,0 +1,17 @@
+---
+import site from '../data/site.json';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="mono">© {year} {site.name}</div>
+    <ul class="mono">
+      <li><a href={site.links.substack} rel="me">Substack</a></li>
+      <li><a href={site.links.scholar} rel="me">Google Scholar</a></li>
+      <li><a href={site.links.github} rel="me">GitHub</a></li>
+      <li><a href={site.links.linkedin} rel="me">LinkedIn</a></li>
+      <li><a href={site.links.twitter} rel="me">X / Twitter</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+    </ul>
+  </div>
+</footer>

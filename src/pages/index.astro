@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import OtmCard from '../components/OtmCard.astro';
+import PaperItem from '../components/PaperItem.astro';
+import ArticleItem from '../components/ArticleItem.astro';
+import { getOtmPosts, OTM_URL } from '../lib/substack';
+import papers from '../data/papers.json';
+import articles from '../data/articles.json';
+import site from '../data/site.json';
+
+const otm = (await getOtmPosts()).slice(0, 3);
+const recentArticles = [...articles].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
+const recentPapers = [...papers].sort((a, b) => b.year - a.year).slice(0, 3);
+---
+<Base>
+  <section class="wrap hero">
+    <div>
+      <h1>Grigori Guitchounts</h1>
+      <p class="lede">
+        I am a neuroscientist, AI researcher, and writer. I trained as a neural engineer and
+        systems neuroscientist, recording from the brains of songbirds and rats; now I study
+        artificial ones, using tools from neuroscience to understand how large language models compute.
+        I do this work at <a href={site.links.flagship}>Flagship Pioneering</a>, where I am a
+        Senior Principal Scientist on the Pioneering Intelligence team.
+      </p>
+      <p class="lede">
+        I also write for a general audience. My essays have appeared in
+        <a href="https://www.noemamag.com">Noema</a>, <a href={site.links.nautilus}>Nautilus</a>, and <a href="https://undark.org">Undark</a>, and with
+        Jesseba Fernando I write <a href={OTM_URL}>Of Two Minds</a>, a newsletter about natural and
+        artificial brains.
+      </p>
+      <div class="links">
+        <a href="/about">About</a>
+        <a href={OTM_URL} class="ext">Subscribe to Of Two Minds</a>
+        <a href={site.links.scholar} class="ext">Google Scholar</a>
+      </div>
+    </div>
+    <figure class="figure">
+      <img src="/images/gg.jpg" alt="Portrait of Grigori Guitchounts" width="675" height="900" fetchpriority="high" />
+      <figcaption><b>Fig. 1.</b> The author. Boston, MA.</figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <h2>Latest from Of Two Minds</h2>
+      <a class="more ext" href={OTM_URL}>All posts</a>
+    </div>
+    <ul class="cards">
+      {otm.map((post) => <OtmCard post={post} />)}
+    </ul>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <h2>Essays &amp; journalism</h2>
+      <a class="more" href="/writing">All essays →</a>
+    </div>
+    <ul class="items">
+      {recentArticles.map((a) => <ArticleItem article={a} />)}
+    </ul>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <h2>Recent papers</h2>
+      <a class="more" href="/papers">All papers →</a>
+    </div>
+    <ul class="items">
+      {recentPapers.map((p) => <PaperItem paper={p} compact />)}
+    </ul>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <h2>Elsewhere on this site</h2>
+    </div>
+    <ul class="items">
+      <li class="item"><div class="when">2009–2017</div><div><h3><a href="/blog">The old blog</a></h3><p>Fifty-odd posts on neuroscience, science policy, and philosophy, written between college and the end of grad school.</p></div></li>
+      <li class="item"><div class="when">2013–2016</div><div><h3><a href="/art">Paintings</a></h3><p>Acrylic, ink, and oil on canvas.</p></div></li>
+    </ul>
+  </section>
+</Base>

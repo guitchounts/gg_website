@@ -1,0 +1,17 @@
+---
+title: "Trendy Lines for Coffee and Depression"
+date: "2011-09-27"
+categories: ["Science/Philosophy"]
+tags: ["coffee", "science journalism", "statistics"]
+excerpt: ""
+legacyUrl: "/blog/2011/09/27/trendy-lines-for-coffee-and-depression"
+---
+
+"Can drinking coffee help stave off depression?", [writes Anahad O'Connor](http://well.blogs.nytimes.com/2011/09/26/coffee-drinking-linked-to-less-depression-in-women/) for Tara Parker-Pope's Well Blog on the New York Times. A [new paper](archinte.ama-assn.org/cgi/content/full/171/17/1571) in *The Archives of Internal Medicine* by Alberto Ascherio's group at Harvard School of Public Health shows a dose-dependent trend between daily caffeine consumption and relative risk of depression in women. The authors found that women who drink 4-6 cups of coffee daily have a reduced relative risk of becoming depressed compared to women who don't drink coffee.
+As every psychology student will tell you, "correlation is not causation." And while Anahad's article is teaming with suggestions that coffee helps against depression (proper language is difficult when it comes to analyzing data), the real offense goes deeper, into Dr. Ascherio's report. The only figure in the paper boasts a P value for a linear trend of 0.02 and some impressively overlapping 95% Confidence Intervals (C.I.; meaning that 95% of each point's population falls within the y-values covered by the vertical bars).
+
+[![](http://static1.squarespace.com/static/5859e85dd2b8571a0a859309/5865edca14fd83ac4f161a93/5865edcd14fd83ac4f161aa8/1483075021245/bogus-figure.gif?format=original)](http://archinte.ama-assn.org.ezproxy.bu.edu/cgi/content/full/171/17/1571/IOI15048F1)
+
+There is no doubt that there is a trend in this data set. But with such a wide - and overlapping - spread of the relative risk of depression under each caffeine-amount category, there is almost no chance that there is a statistically significant difference among any group ([it is possible to get P < 0.05 if the CIs are equal and overlapping if the difference in means is more than 3x standard error](http://www.cmaj.ca/content/166/1/65.long), SE; the lower and upper bound of the CI together add up to about 4x SE; in this figure, the differences between any two means are clearly smaller than 2xSE, let alone 3x). The women in this study in essence all have the same risk of depression regardless of whether they drink one or six cups per day. Important too is that the (valid) assumption that drinking no coffee (rather, less than 100mg per day) gives one a relative risk of 1 has not been tested; but would the trend still hold if we had 95% C.I.s for the first point? Will we ever see a public health recommendation to drink six cups of coffee daily to reduce the risk of depression by 20%? Correlation-causation notwithstanding, it's hard to imagine how one could be depressed while consuming alarming doses of caffeine (that remark is anecdotal, of course).
+
+Perhaps these issues are simply impossible to acknowledge in clinical research. After all, correlating something as complex as depression with something as unreliable as self-reported caffeine consumption (over a period of ten years, no less) is quite a challenge. But it is the responsibility of the science journalist to parse the tons of new research that comes out daily and to give the public an honest and unhyped account. Will we now have to grapple with the caffeine-crazed depression-wary Times readers?

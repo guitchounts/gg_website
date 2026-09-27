@@ -1,0 +1,236 @@
+/* ------------------------------------------------------------------
+   Design tokens. Three themes share one component layer; switch with
+   <html data-theme="editorial|notebook|retro">. Default: editorial.
+   Palette borrowed from the Of Two Minds design system (bone-ink,
+   copper-forest, warm-amber) so the site and the Substack rhyme.
+   ------------------------------------------------------------------ */
+@import '@fontsource-variable/newsreader';
+@import '@fontsource-variable/newsreader/wght-italic.css';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/fraunces/wght-italic.css';
+@import '@fontsource-variable/inter';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+:root {
+  --paper: #f5f3ef;
+  --paper-2: #ece8e1;
+  --ink: #2a2a2a;
+  --ink-2: #5b5751;
+  --ink-3: #8a857d;
+  --rule: rgba(42, 42, 42, 0.14);
+  --accent: #a87042;        /* copper */
+  --accent-2: #2d4a3e;      /* forest */
+  --accent-soft: rgba(168, 112, 66, 0.12);
+  --grid: transparent;
+
+  --font-body: 'Newsreader Variable', Georgia, 'Times New Roman', serif;
+  --font-display: 'Fraunces Variable', 'Newsreader Variable', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --measure: 66ch;
+  --wide: 1080px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --radius: 4px;
+  --fs-0: clamp(1.05rem, 0.98rem + 0.3vw, 1.2rem);
+}
+
+[data-theme='notebook'] {
+  --paper: #f7f6f2;
+  --paper-2: #edebe4;
+  --accent: #2d4a3e;
+  --accent-2: #a87042;
+  --accent-soft: rgba(45, 74, 62, 0.1);
+  --grid: rgba(42, 42, 42, 0.07);
+  --font-body: 'Inter Variable', system-ui, sans-serif;
+  --font-display: 'Newsreader Variable', Georgia, serif;
+  --fs-0: clamp(1rem, 0.95rem + 0.2vw, 1.1rem);
+}
+
+[data-theme='retro'] {
+  --paper: #1d2026;
+  --paper-2: #262a32;
+  --ink: #e8e2d6;
+  --ink-2: #b7b0a3;
+  --ink-3: #7f7a70;
+  --rule: rgba(232, 226, 214, 0.16);
+  --accent: #d9a441;        /* amber */
+  --accent-2: #c4956a;
+  --accent-soft: rgba(217, 164, 65, 0.14);
+  --grid: transparent;
+  color-scheme: dark;
+}
+/* Auto dark mode: follow the OS preference when no theme has been chosen
+   explicitly (via ?theme= / localStorage) and the page is not locked light
+   (the Art page). Tokens mirror the retro theme. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --paper: #1d2026;
+    --paper-2: #262a32;
+    --ink: #e8e2d6;
+    --ink-2: #b7b0a3;
+    --ink-3: #7f7a70;
+    --rule: rgba(232, 226, 214, 0.16);
+    --accent: #d9a441;        /* amber */
+    --accent-2: #c4956a;
+    --accent-soft: rgba(217, 164, 65, 0.14);
+    --grid: transparent;
+    color-scheme: dark;
+  }
+}
+
+
+/* ---------- base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-0);
+  line-height: 1.6;
+  font-feature-settings: 'kern', 'liga', 'onum';
+  text-rendering: optimizeLegibility;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+main { flex: 1; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--accent); text-decoration: none; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+a:hover { text-decoration: underline; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; margin: 0 0 0.5em; letter-spacing: -0.01em; color: var(--ink); }
+h1 { font-size: clamp(2rem, 1.5rem + 2.5vw, 3.4rem); font-variation-settings: 'opsz' 144, 'SOFT' 50; }
+h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem); }
+h3 { font-size: 1.25rem; }
+p { margin: 0 0 1em; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+::selection { background: var(--accent-soft); }
+
+/* ---------- layout ---------- */
+.wrap { width: min(100% - 2 * var(--gutter), var(--wide)); margin-inline: auto; }
+.prose { max-width: var(--measure); }
+.prose p, .prose li { font-size: calc(var(--fs-0) * 1.05); line-height: 1.65; }
+.prose img { margin: 1.5rem 0; border-radius: var(--radius); }
+.prose blockquote { margin: 1.5rem 0; padding-left: 1.25rem; border-left: 2px solid var(--accent); color: var(--ink-2); font-style: italic; }
+.prose a { text-decoration: underline; text-decoration-color: var(--rule); }
+.prose a:hover { text-decoration-color: var(--accent); }
+.prose h2, .prose h3 { margin-top: 2em; }
+
+/* ---------- typographic utilities ---------- */
+.mono, .label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-feature-settings: normal;
+}
+.label a { color: inherit; }
+.section-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  border-top: 1px solid var(--ink);
+  padding-top: 0.6rem;
+  margin: 3.5rem 0 1.5rem;
+}
+.section-head h2 { font-size: 1.05rem; font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin: 0; }
+.section-head .more { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.05em; }
+.dek { color: var(--ink-2); font-style: italic; }
+.small { font-size: 0.9rem; color: var(--ink-2); }
+.ext::after { content: ' ↗'; font-size: 0.8em; opacity: 0.7; }
+
+/* ---------- header / footer ---------- */
+.site-header { padding: 1.5rem 0 0; }
+.site-header .wrap { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.75rem 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+.brand { font-family: var(--font-display); font-size: 1.15rem; color: var(--ink); letter-spacing: -0.01em; }
+.brand:hover { text-decoration: none; color: var(--accent); }
+.nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.4rem; margin: 0; padding: 0; list-style: none; }
+.nav a { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.nav a:hover, .nav a[aria-current='page'] { color: var(--accent); text-decoration: none; }
+.nav a[aria-current='page'] { border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+.site-footer { margin-top: 5rem; padding: 2rem 0 3rem; border-top: 1px solid var(--rule); color: var(--ink-3); }
+.site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem; }
+.site-footer ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; list-style: none; margin: 0; padding: 0; }
+.site-footer a { color: var(--ink-2); }
+
+/* ---------- lists of items (papers, essays, posts) ---------- */
+.items { list-style: none; margin: 0; padding: 0; }
+.item { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.25rem 1.5rem; padding: 1.1rem 0; border-bottom: 1px solid var(--rule); }
+.item:last-child { border-bottom: 0; }
+.item .when { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; color: var(--ink-3); padding-top: 0.35rem; }
+.item h3 { font-size: 1.25rem; margin: 0 0 0.2rem; font-weight: 500; }
+.item h3 a { color: var(--ink); }
+.item h3 a:hover { color: var(--accent); text-decoration: none; }
+.item .meta { font-size: 0.9rem; color: var(--ink-2); margin: 0 0 0.25rem; }
+.item .meta em { font-style: italic; }
+.item p { margin: 0.25rem 0 0; color: var(--ink-2); font-size: 0.98rem; }
+.item details summary { cursor: pointer; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); list-style: none; margin-top: 0.4rem; }
+.item details summary::-webkit-details-marker { display: none; }
+.item details summary::before { content: '+ '; }
+.item details[open] summary::before { content: '− '; }
+.item details p { margin-top: 0.6rem; }
+.item .links { display: flex; gap: 1rem; margin-top: 0.35rem; }
+.item .links a { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
+@media (max-width: 640px) { .item { grid-template-columns: 1fr; gap: 0.15rem; } .item .when { padding-top: 0; } }
+
+/* ---------- cards (OTM) ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; list-style: none; margin: 0; padding: 0; }
+.card { background: var(--paper-2); border-radius: var(--radius); padding: 1.1rem 1.2rem 1.2rem; display: flex; flex-direction: column; gap: 0.4rem; border: 1px solid transparent; transition: border-color 0.15s ease, transform 0.15s ease; }
+.card:hover { border-color: var(--accent); transform: translateY(-1px); }
+.card img { aspect-ratio: 16/9; object-fit: cover; width: 100%; border-radius: 2px; margin-bottom: 0.3rem; filter: saturate(0.85); }
+.card h3 { font-size: 1.1rem; margin: 0; }
+.card h3 a { color: var(--ink); }
+.card h3 a:hover { color: var(--accent); text-decoration: none; }
+.card p { margin: 0; font-size: 0.92rem; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ---------- hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.9fr); gap: 2.5rem 4rem; align-items: start; padding: 3.5rem 0 1rem; }
+.hero h1 { margin-bottom: 1rem; }
+.hero .lede { font-size: calc(var(--fs-0) * 1.18); line-height: 1.55; max-width: 34em; }
+.hero .lede a { text-decoration: underline; text-decoration-color: var(--rule); }
+.hero .lede a:hover { text-decoration-color: var(--accent); }
+.hero .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; margin-top: 1.5rem; }
+.hero .links a { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.figure { margin: 0; }
+.figure img { border-radius: var(--radius); width: 100%; filter: saturate(0.9) contrast(1.02); }
+.figure figcaption { margin-top: 0.6rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--ink-3); }
+.figure figcaption b { font-weight: 500; color: var(--ink-2); }
+@media (max-width: 760px) { .hero { grid-template-columns: 1fr; padding-top: 2rem; } .figure { max-width: 300px; } }
+
+/* ---------- gallery ---------- */
+.gallery { columns: 3 220px; column-gap: 1rem; }
+.gallery figure { margin: 0 0 1rem; break-inside: avoid; }
+.gallery button { all: unset; cursor: zoom-in; display: block; width: 100%; }
+.gallery img { border-radius: 2px; width: 100%; box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 8px 24px -12px rgba(0,0,0,0.25); transition: transform 0.2s ease; }
+.gallery button:hover img { transform: translateY(-2px); }
+.gallery figcaption { margin-top: 0.4rem; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.05em; color: var(--ink-3); }
+dialog.lightbox { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; width: 100vw; height: 100vh; margin: 0; display: none; place-items: center; }
+dialog.lightbox[open] { display: grid; }
+dialog.lightbox::backdrop { background: rgba(20, 20, 22, 0.92); }
+dialog.lightbox img { max-width: min(96vw, 1600px); max-height: 88vh; width: auto; height: auto; object-fit: contain; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+dialog.lightbox figcaption { text-align: center; color: #cfc9be; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; margin-top: 0.75rem; }
+dialog.lightbox .close { position: fixed; top: 1rem; right: 1.25rem; all: unset; position: fixed; top: 1rem; right: 1.25rem; color: #e8e2d6; font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.08em; cursor: pointer; padding: 0.5rem; }
+
+/* ---------- page header ---------- */
+.page-head { padding: 3rem 0 1.5rem; }
+.page-head h1 { margin-bottom: 0.5rem; }
+.page-head .dek { max-width: var(--measure); font-size: calc(var(--fs-0) * 1.1); }
+.year-group { margin-top: 2.5rem; }
+.year-group > .label { margin-bottom: 0.25rem; display: block; border-bottom: 1px solid var(--ink); padding-bottom: 0.4rem; color: var(--ink); }
+
+/* ---------- post ---------- */
+.post-head { padding: 3rem 0 1rem; max-width: var(--measure); }
+.post-head h1 { font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem); }
+.post-nav { display: flex; justify-content: space-between; gap: 2rem; margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); font-size: 0.95rem; }
+.post-nav a { color: var(--ink-2); }
+.notice { background: var(--paper-2); border-left: 2px solid var(--accent); padding: 0.75rem 1rem; font-size: 0.9rem; color: var(--ink-2); border-radius: 0 var(--radius) var(--radius) 0; margin: 1.5rem 0; }
+
+/* ---------- substack embed ---------- */
+.substack-embed iframe { width: 100%; max-width: 480px; height: 150px; border: 1px solid var(--rule); background: white; border-radius: var(--radius); }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } html { scroll-behavior: auto; } }

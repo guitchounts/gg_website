@@ -1,0 +1,110 @@
+[
+  {
+    "title": "PairSAE: Mechanistic Interpretability from Pair Representations in Protein Co-Folding",
+    "authors": "Giosue Migliorini, Aristofanis Rontogiannis, Grigori Guitchounts, Nicholas Franklin, Axel Elaldi, Olivia Viessmann",
+    "venue": "arXiv",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2606.27440",
+    "pdf": "https://arxiv.org/pdf/2606.27440",
+    "abstract": "Foundation models for structural biology have achieved remarkable performance in predicting biomolecular structure and show promise for the design of proteins and small molecules. Yet understanding which internal features drive their outputs remains challenging. Standard sparse autoencoders (SAEs), effective on transformer-style sequence embeddings, do not transfer cleanly to pairformer-like architectures: naively operating on pairwise representations yields a quadratic blow-up of features and obscures concepts distributed jointly across sequence and pair representations. We introduce PairSAE, which summarizes pairwise tensors via an N-mode SVD into token-wise interaction roles, then uses a sparse autoencoder to learn a shared set of token-level features that decode into both sequence and pair representations. Evaluated on Boltz-2 activations for PLINDER protein-ligand complexes, PairSAE yields interpretable features that align with UniProt annotations and predict Boltz-2 affinity values."
+  },
+  {
+    "title": "Dynamics of the Transformer Residual Stream: Coupling Spectral Geometry to Network Topology",
+    "authors": "Jesseba Fernando, Grigori Guitchounts",
+    "venue": "arXiv",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2605.14258",
+    "pdf": "https://arxiv.org/pdf/2605.14258",
+    "abstract": "Large language models are remarkably capable, yet how computation propagates through their layers remains poorly understood. A growing line of work treats depth as discrete time and the residual stream as a dynamical system, where each layer's nonlinear update has a local linear description. We perform full Jacobian eigendecomposition across three production-scale LLMs and show that training installs a monotonic spectral gradient through depth, from non-normal, rotation-dominated early layers to near-symmetric late layers, together with a cumulative low-rank bottleneck that funnels perturbations into a small fraction of the residual stream's effective dimensions. This gradient and the dimensional collapse are learned rather than architectural, and largely dissolve when structured non-normality is removed. The topological positioning of graph communities predicts whether the Jacobian amplifies or suppresses them, with the sign of the coupling determined by the local operator type."
+  },
+  {
+    "title": "Transformer Dynamics: A neuroscientific approach to interpretability of large language models",
+    "authors": "Jesseba Fernando, Grigori Guitchounts",
+    "venue": "arXiv",
+    "year": 2025,
+    "url": "https://arxiv.org/abs/2502.12131",
+    "pdf": "https://arxiv.org/pdf/2502.12131",
+    "abstract": "Inspired by the success of dynamical systems approaches in neuroscience, we propose a framework for studying computations in deep learning systems. We focus on the residual stream (RS) in transformer models, conceptualizing it as a dynamical system evolving across layers. Activations of individual RS units exhibit strong continuity across layers, despite the RS being a non-privileged basis. Activations in the RS accelerate and grow denser over layers, while individual units trace unstable periodic orbits. In reduced-dimensional spaces, the RS follows a curved trajectory with attractor-like dynamics in the lower layers. These insights bridge dynamical systems theory and mechanistic interpretability, establishing a foundation for a \"neuroscience of AI\"."
+  },
+  {
+    "title": "A transcriptional rheostat couples past activity to future sensory responses",
+    "authors": "Tatsuya Tsukahara, David H. Brann, Stan L. Pashkovski, Grigori Guitchounts, Thomas Bozza, Sandeep Robert Datta",
+    "venue": "Cell",
+    "year": 2021,
+    "url": "https://doi.org/10.1016/j.cell.2021.11.022",
+    "pdf": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8758202/",
+    "abstract": "Animals traversing different environments encounter both stable background stimuli and novel cues, which are thought to be detected by primary sensory neurons and then distinguished by downstream brain circuits. Here, we show that each of the ∼1,000 olfactory sensory neuron (OSN) subtypes in the mouse harbors a distinct transcriptome whose content is precisely determined by interactions between its odorant receptor and the environment. This transcriptional variation is systematically organized to support sensory adaptation: expression levels of more than 70 genes relevant to transforming odors into spikes continuously vary across OSN subtypes, dynamically adjust to new environments over hours, and accurately predict acute OSN-specific odor responses. The sensory periphery therefore separates salient signals from predictable background via a transcriptional rheostat whose moment-to-moment state reflects the past and constrains the future."
+  },
+  {
+    "title": "Stable 3D Head Direction Signals in the Primary Visual Cortex",
+    "authors": "Grigori Guitchounts, William Lotter, Joel Dapello, David Cox",
+    "venue": "bioRxiv",
+    "year": 2020,
+    "url": "https://www.biorxiv.org/content/10.1101/2020.09.04.283762",
+    "pdf": "https://www.biorxiv.org/content/10.1101/2020.09.04.283762.full.pdf",
+    "abstract": "The mammalian brain's navigation system is informed in large part by visual signals. While the primary visual cortex (V1) is extensively interconnected with brain areas involved in computing head direction (HD) information, it is unknown to what extent navigation information is available in the population activity of visual cortex. We recorded neuronal activity in V1 of freely behaving rats and show that significant information about yaw, roll, and pitch of the head can be linearly decoded from V1 either in the presence or absence of visual cues. Individual V1 neurons were tuned to head direction, with a quarter of the neurons tuned to conjunctions of angles in all three planes. These results demonstrate the presence of a critical navigational signal in a primary cortical sensory area and support predictive coding theories of brain function."
+  },
+  {
+    "title": "Encoding of 3D Head Orienting Movements in the Primary Visual Cortex",
+    "authors": "Grigori Guitchounts, Javier Masís, Steffen B. E. Wolff, David Cox",
+    "venue": "Neuron",
+    "year": 2020,
+    "url": "https://doi.org/10.1016/j.neuron.2020.07.014",
+    "pdf": "https://www.cell.com/action/showPdf?pii=S0896-6273%2820%2930531-6",
+    "abstract": "Animals actively sample the sensory world by generating complex patterns of movement that evolve in three dimensions. Whether or how such movements affect neuronal activity in sensory cortical areas remains largely unknown, because most experiments exploring movement-related modulation have been performed in head-fixed animals. Here, we show that 3D head-orienting movements (HOMs) modulate primary visual cortex (V1) activity in a direction-specific manner that also depends on light. We identify two overlapping populations of movement-direction-tuned neurons that support this modulation, one of which is direction tuned in the dark and the other in the light. Although overall movement enhanced V1 responses to visual stimulation, HOMs suppressed responses. We demonstrate that V1 receives a motor efference copy related to orientation from secondary motor cortex, which is involved in controlling HOMs."
+  },
+  {
+    "title": "64-Channel Carbon Fiber Electrode Arrays for Chronic Electrophysiology",
+    "authors": "Grigori Guitchounts, David Cox",
+    "venue": "Scientific Reports",
+    "year": 2020,
+    "url": "https://www.nature.com/articles/s41598-020-60873-y",
+    "pdf": "https://www.nature.com/articles/s41598-020-60873-y.pdf",
+    "abstract": "Monitoring neuronal activity over long periods of time is technically challenging, and limited, in part, by the invasive nature of recording tools. Carbon fiber (CF) electrodes are thinner and more flexible than typical metal or silicon electrodes, but previously described arrays had low channel counts and required time-consuming manual assembly. Here we report the design of an expanded-channel-count carbon fiber electrode array (CFEA) as well as a method for fast preparation of the recording sites using acid etching and electroplating with PEDOT-TFB, and demonstrate the ability of the 64-channel CFEA to record from rat visual cortex. We include designs for interfacing the system with micro-drives or flex-PCB cables for recording from multiple brain regions, as well as a facilitated method for coating CFs with the insulator Parylene-C."
+  },
+  {
+    "title": "A micro-CT-based method for quantitative brain lesion characterization and electrode localization",
+    "authors": "Javier Masís, David Mankus, Steffen B. E. Wolff, Grigori Guitchounts, Maximilian Joesch, David D. Cox",
+    "venue": "Scientific Reports",
+    "year": 2018,
+    "url": "https://www.nature.com/articles/s41598-018-23247-z",
+    "pdf": "https://www.nature.com/articles/s41598-018-23247-z.pdf",
+    "abstract": "Lesion verification and quantification is traditionally done via histological examination of sectioned brains, a time-consuming process that relies heavily on manual estimation. We propose a new, simple method for quantitative lesion characterization and electrode localization that is less labor-intensive and yields more detailed results than conventional methods. We stain whole rat and zebra finch brains in osmium tetroxide, embed these in resin and scan entire brains in a micro-CT machine. The scans result in 3D reconstructions of the brains with section thickness dependent on sample size that can be segmented manually or automatically."
+  },
+  {
+    "title": "Unstable neurons underlie a stable learned behavior",
+    "authors": "William A. Liberti III*, Jeffrey E. Markowitz*, L. Nathan Perkins, Derek C. Liberti, Daniel P. Leman, Grigori Guitchounts, Tarciso Velho, Darrell N. Kotton, Carlos Lois, Timothy J. Gardner",
+    "venue": "Nature Neuroscience",
+    "year": 2016,
+    "url": "https://www.nature.com/articles/nn.4405",
+    "pdf": "/papers/pdf/nn4405.pdf",
+    "abstract": "Motor skills can be maintained for decades, but the biological basis of this memory persistence remains largely unknown. The zebra finch sings a highly stereotyped song that is stable for years, but it is not known whether the precise neural patterns underlying song are stable or shift from day to day. Here we demonstrate that the population of projection neurons coding for song in the premotor nucleus, HVC, change from day to day. The most dramatic shifts occur over intervals of sleep. In contrast, ensemble measurements dominated by inhibition persist unchanged even after damage to downstream motor nerves. Spatiotemporal patterns of inhibition can maintain a stable scaffold for motor dynamics while the population of principal neurons that directly drive behavior shift from one day to the next."
+  },
+  {
+    "title": "Mesoscopic patterns of neural activity support songbird cortical sequences",
+    "authors": "Jeffrey E. Markowitz*, William A. Liberti III*, Grigori Guitchounts, Tarciso Velho, Carlos Lois, Timothy J. Gardner",
+    "venue": "PLoS Biology",
+    "year": 2015,
+    "url": "https://doi.org/10.1371/journal.pbio.1002158",
+    "pdf": "/papers/pdf/journalpbio1002158.pdf",
+    "abstract": "Time-locked sequences of neural activity can be found throughout the vertebrate forebrain in various species and behavioral contexts. Here, we describe a spatial and temporal organization of the songbird premotor cortical microcircuit that supports sparse sequences of neural activity. Multi-channel electrophysiology and calcium imaging reveal that neural activity in premotor cortex is correlated with a length scale of 100 µm. Within this length scale, basal-ganglia-projecting excitatory neurons, on average, fire at a specific phase of a local 30 Hz network rhythm."
+  },
+  {
+    "title": "A carbon-fiber electrode array for long-term neural recording",
+    "authors": "Grigori Guitchounts*, Jeffrey E. Markowitz*, William A. Liberti*, Timothy J. Gardner",
+    "venue": "Journal of Neural Engineering",
+    "year": 2013,
+    "url": "https://doi.org/10.1088/1741-2560/10/4/046016",
+    "pdf": "/papers/pdf/Guitchounts-et-al-JNE-2013.pdf",
+    "abstract": "Chronic neural recording in behaving animals is an essential method for studies of neural circuit function, but stable recordings from small, densely packed neurons remain challenging, particularly over time-scales relevant for learning. We describe an assembly method for a 16-channel electrode array consisting of carbon fibers (<5 μm diameter) individually insulated with Parylene-C and fire-sharpened. The diameter of the array is approximately 26 microns along the full extent of the implant. Carbon fiber arrays were tested in HVC, a song motor nucleus, of singing zebra finches, where the electrodes provided stable multi-unit recordings over time-scales of months."
+  },
+  {
+    "title": "The two etomidate sites in α1β2γ2 GABAA receptors contribute equally and non-cooperatively to modulation of channel gating",
+    "authors": "Grigori Guitchounts, Deirdre S. Stewart, Stuart A. Forman",
+    "venue": "Anesthesiology",
+    "year": 2012,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3366439/",
+    "pdf": "/papers/pdf/Guitchounts-et-al-Anesthesiology-2012.pdf",
+    "abstract": "Etomidate is a potent hypnotic agent that acts via GABAA receptors. Evidence supports the presence of two etomidate sites per receptor, and current models assume that each site contributes equally and non-cooperatively to drug effects. We used concatenated dimer and trimer GABAA subunit assemblies with etomidate-site mutations inserted into either or both, and found that both single-site mutant receptors displayed indistinguishable functional properties, supporting the hypothesis that the two sites contribute equally and non-cooperatively to drug interactions and gating effects."
+  }
+]

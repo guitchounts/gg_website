@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import PaperItem from '../components/PaperItem.astro';
+import papers from '../data/papers.json';
+const sorted = [...papers].sort((a, b) => b.year - a.year);
+---
+<Base title="Papers" description="Peer-reviewed papers and preprints by Grigori Guitchounts: mechanistic interpretability, visual cortex, songbird neuroscience, carbon-fiber electrodes.">
+  <div class="wrap">
+    <header class="page-head">
+      <h1>Papers</h1>
+    </header>
+    <ul class="items">{sorted.map((p) => <PaperItem paper={p} />)}</ul>
+    <p class="small" style="margin-top:2rem">* equal contribution.</p>
+  </div>
+</Base>

@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+---
+<Base title="About" description="About Grigori Guitchounts: neuroscientist, AI researcher at Flagship Pioneering, and science writer.">
+  <div class="wrap">
+    <section class="hero" style="padding-top:3rem">
+      <div class="prose">
+        <h1>About</h1>
+        <p>
+          I was born in Moscow and moved to the United States when I was ten. I am a neuroscientist
+          by training and now work on artificial intelligence, mostly on the question of how the
+          internal states of large neural networks give rise to what they do.
+        </p>
+        <p>
+          I studied at Boston University and spent two years as a technician in
+          <a href="https://www.gardnerlab.org">Tim Gardner's</a> lab, building carbon-fiber electrode
+          arrays for recording from single neurons in singing zebra finches over months. I received my PhD in
+          Neuroscience from Harvard in 2020, working with David Cox on how three-dimensional head
+          movement shapes activity in the visual cortex of freely moving rats, and did postdoctoral
+          work at Harvard Medical School with Sandeep Robert Datta.
+        </p>
+        <p>
+          Since 2022 I have been at <a href={site.links.flagship}>Flagship Pioneering</a>, where I am a
+          Senior Principal Scientist on the Pioneering Intelligence team. My research there applies ideas
+          from systems neuroscience, dynamical systems and population geometry in particular, to the
+          internals of transformers and biological foundation models. I am also a co-founder of a
+          Flagship company, still in stealth, focused on AI and mental health. With Jesseba Fernando I write
+          <a href={site.links.substack}>Of Two Minds</a>, a newsletter about natural and artificial brains.
+        </p>
+        <p>
+          My essays and reporting have appeared in <a href="https://www.noemamag.com">Noema</a>, <a href={site.links.nautilus}>Nautilus</a>, and
+          <a href="https://undark.org">Undark</a>, on animal research, the epistemics of neuroscience,
+          psychedelics, open-access publishing, and the history of Soviet science.
+        </p>
+        <p class="small">
+          <i>Guitchounts</i> is pronounced <i>gee-chunz</i>: <i>gee</i> like geese, <i>chunz</i> like you just sneezed.
+        </p>
+        <h3 style="margin-top:2.5rem">Contact</h3>
+        <ul class="small">
+          <li><a href={site.links.linkedin}>LinkedIn</a></li>
+          <li><a href={site.links.github}>GitHub</a></li>
+          <li><a href={site.links.scholar}>Google Scholar</a></li>
+          <li><a href={site.links.substack}>Of Two Minds on Substack</a></li>
+        </ul>
+      </div>
+      <figure class="figure">
+        <img src="/images/gg.jpg" alt="Portrait of Grigori Guitchounts" width="675" height="900" />
+        <figcaption><b>Fig. 2.</b> The author, again.</figcaption>
+      </figure>
+    </section>
+  </div>
+</Base>

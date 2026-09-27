@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import ArticleItem from '../components/ArticleItem.astro';
+import articles from '../data/articles.json';
+const sorted = [...articles].sort((a, b) => b.date.localeCompare(a.date));
+const byYear = new Map<number, typeof sorted>();
+for (const a of sorted) { const y = new Date(a.date).getFullYear(); byYear.set(y, [...(byYear.get(y) ?? []), a]); }
+---
+<Base title="Essays" description="Essays and science journalism by Grigori Guitchounts in Noema, Nautilus, Undark, and elsewhere.">
+  <div class="wrap">
+    <header class="page-head">
+      <h1>Essays &amp; journalism</h1>
+      <p class="dek">Writing for a general audience about brains, machines, animals, music, and the practice of science. For the newsletter, see <a href="/of-two-minds">Of Two Minds</a>.</p>
+    </header>
+    {[...byYear.entries()].map(([year, list]) => (
+      <section class="year-group">
+        <span class="label">{year}</span>
+        <ul class="items">{list.map((a) => <ArticleItem article={a} showYear={false} />)}</ul>
+      </section>
+    ))}
+  </div>
+</Base>

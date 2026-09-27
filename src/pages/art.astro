@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import art from '../data/art.json';
+---
+<Base title="Art" description="Paintings by Grigori Guitchounts: acrylic, ink, and oil on canvas." theme="editorial">
+  <div class="wrap">
+    <header class="page-head">
+      <h1>Art</h1>
+      <p class="dek">Paintings, 2013–2016. Acrylic, ink, and oil on canvas and canvas paper.</p>
+    </header>
+    <div class="gallery">
+      {art.map((a, i) => (
+        <figure>
+          <button type="button" data-index={i} data-src={a.src} data-caption={a.title} aria-label={`Open ${a.title || 'painting'} full size`}>
+            <img src={a.thumb} alt={a.title || 'Untitled painting'} width={a.width} height={a.height} loading={i < 4 ? 'eager' : 'lazy'} />
+          </button>
+          {a.title && <figcaption>{a.title}</figcaption>}
+        </figure>
+      ))}
+    </div>
+  </div>
+  <dialog class="lightbox" aria-label="Painting, full size">
+    <button class="close" type="button" aria-label="Close">CLOSE ×</button>
+    <figure style="margin:0"><img alt="" /><figcaption></figcaption></figure>
+  </dialog>
+  <script>
+    const dlg = document.querySelector<HTMLDialogElement>('dialog.lightbox')!;
+    const img = dlg.querySelector('img')!;
+    const cap = dlg.querySelector('figcaption')!;
+    document.querySelectorAll<HTMLButtonElement>('.gallery button').forEach((b) =>
+      b.addEventListener('click', () => {
+        img.src = b.dataset.src!; img.alt = b.dataset.caption || 'Painting'; cap.textContent = b.dataset.caption || '';
+        dlg.showModal();
+      }),
+    );
+    dlg.querySelector('.close')!.addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+  </script>
+</Base>
