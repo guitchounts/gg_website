@@ -4,8 +4,13 @@
    Palette borrowed from the Of Two Minds design system (bone-ink,
    copper-forest, warm-amber) so the site and the Substack rhyme.
    ------------------------------------------------------------------ */
+@import '@fontsource-variable/eb-garamond/wght.css';
+@import '@fontsource-variable/eb-garamond/wght-italic.css';
+@import '@fontsource-variable/source-serif-4/opsz.css';
+@import '@fontsource-variable/source-serif-4/opsz-italic.css';
+@import '@fontsource-variable/literata/opsz.css';
+@import '@fontsource-variable/literata/opsz-italic.css';
 @import '@fontsource-variable/newsreader';
-@import '@fontsource-variable/newsreader/wght-italic.css';
 @import '@fontsource-variable/fraunces';
 @import '@fontsource-variable/fraunces/wght-italic.css';
 @import '@fontsource-variable/inter';
@@ -24,16 +29,21 @@
   --accent-soft: rgba(168, 112, 66, 0.12);
   --grid: transparent;
 
-  --font-body: 'Newsreader Variable', Georgia, 'Times New Roman', serif;
-  --font-display: 'Fraunces Variable', 'Newsreader Variable', Georgia, serif;
+  --font-body: 'meno-text', 'EB Garamond Variable', Georgia, 'Times New Roman', serif;
+  --font-display: 'meno-banner', 'Fraunces Variable', Georgia, serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --measure: 66ch;
   --wide: 1080px;
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --radius: 4px;
-  --fs-0: clamp(1.05rem, 0.98rem + 0.3vw, 1.2rem);
+  --fs-0: clamp(1.1rem, 1rem + 0.35vw, 1.28rem);
 }
+
+[data-font='literata'] { --font-body: 'Literata Variable', Georgia, serif; }
+[data-font='source-serif'] { --font-body: 'Source Serif 4 Variable', Georgia, serif; }
+[data-font='garamond'] { --font-body: 'EB Garamond Variable', Georgia, serif; --font-display: 'Fraunces Variable', Georgia, serif; }
+[data-font='newsreader'] { --font-body: 'Newsreader Variable', Georgia, serif; }
 
 [data-theme='notebook'] {
   --paper: #f7f6f2;
@@ -59,24 +69,6 @@
   --accent-soft: rgba(217, 164, 65, 0.14);
   --grid: transparent;
   color-scheme: dark;
-}
-/* Auto dark mode: follow the OS preference when no theme has been chosen
-   explicitly (via ?theme= / localStorage) and the page is not locked light
-   (the Art page). Tokens mirror the retro theme. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --paper: #1d2026;
-    --paper-2: #262a32;
-    --ink: #e8e2d6;
-    --ink-2: #b7b0a3;
-    --ink-3: #7f7a70;
-    --rule: rgba(232, 226, 214, 0.16);
-    --accent: #d9a441;        /* amber */
-    --accent-2: #c4956a;
-    --accent-soft: rgba(217, 164, 65, 0.14);
-    --grid: transparent;
-    color-scheme: dark;
-  }
 }
 
 
@@ -104,7 +96,9 @@ main { flex: 1; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--accent); text-decoration: none; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
 a:hover { text-decoration: underline; }
-h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; margin: 0 0 0.5em; letter-spacing: -0.01em; color: var(--ink); }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height: 1.15; margin: 0 0 0.5em; letter-spacing: -0.005em; color: var(--ink); }
+/* Banner cuts are drawn for large sizes; smaller headings use the text face. */
+h3, h4 { font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
 h1 { font-size: clamp(2rem, 1.5rem + 2.5vw, 3.4rem); font-variation-settings: 'opsz' 144, 'SOFT' 50; }
 h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem); }
 h3 { font-size: 1.25rem; }
@@ -147,7 +141,7 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 /* ---------- header / footer ---------- */
 .site-header { padding: 1.5rem 0 0; }
 .site-header .wrap { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.75rem 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
-.brand { font-family: var(--font-display); font-size: 1.15rem; color: var(--ink); letter-spacing: -0.01em; }
+.brand { font-family: var(--font-body); font-weight: 600; font-size: 1.15rem; color: var(--ink); letter-spacing: 0; }
 .brand:hover { text-decoration: none; color: var(--accent); }
 .nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.4rem; margin: 0; padding: 0; list-style: none; }
 .nav a { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
@@ -163,7 +157,7 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 .item { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.25rem 1.5rem; padding: 1.1rem 0; border-bottom: 1px solid var(--rule); }
 .item:last-child { border-bottom: 0; }
 .item .when { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; color: var(--ink-3); padding-top: 0.35rem; }
-.item h3 { font-size: 1.25rem; margin: 0 0 0.2rem; font-weight: 500; }
+.item h3 { font-size: 1.2rem; margin: 0 0 0.2rem; font-weight: 600; }
 .item h3 a { color: var(--ink); }
 .item h3 a:hover { color: var(--accent); text-decoration: none; }
 .item .meta { font-size: 0.9rem; color: var(--ink-2); margin: 0 0 0.25rem; }

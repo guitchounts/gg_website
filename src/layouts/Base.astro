@@ -5,8 +5,8 @@ import Footer from '../components/Footer.astro';
 import site from '../data/site.json';
 
 interface Props { title?: string; description?: string; image?: string; type?: 'website' | 'article'; theme?: 'editorial' | 'notebook' | 'retro'; }
-// `theme` locks a page to one theme (e.g. Art stays light); otherwise the OS
-// preference decides (CSS), unless the reader picked one via ?theme=.
+// `theme` locks a page to one theme; otherwise editorial (light) applies,
+// unless the reader forced one via ?theme= for preview.
 const { title, description = site.description, image = '/images/gg.jpg', type = 'website', theme } = Astro.props;
 const fullTitle = title ? `${title} · ${site.name}` : site.title;
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -20,6 +20,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {site.adobeFontsKitId && <link rel="stylesheet" href={`https://use.typekit.net/${site.adobeFontsKitId}.css`} />}
     <link rel="alternate" type="application/rss+xml" title={`${site.name} — Blog`} href="/rss.xml" />
     <meta property="og:type" content={type} />
     <meta property="og:title" content={fullTitle} />
@@ -27,7 +28,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL(image, Astro.site)} />
     <meta name="twitter:card" content="summary" />
-    <meta name="color-scheme" content={theme ? 'light' : 'light dark'} />
+    <meta name="color-scheme" content="light" />
     <script is:inline>
       // Theme override: ?theme=editorial|notebook|retro forces a theme (persisted in
       // localStorage); ?theme=auto clears it and returns to following the OS setting.
@@ -40,6 +41,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
           if (html.hasAttribute('data-theme-locked')) return;
           var t = localStorage.getItem('theme');
           if (t && ['editorial', 'notebook', 'retro'].includes(t)) html.dataset.theme = t;
+          var f = new URLSearchParams(location.search).get('font');
+          if (f === 'default') localStorage.removeItem('font'); else if (f) localStorage.setItem('font', f);
+          var ff = localStorage.getItem('font');
+          if (ff && ['literata', 'newsreader', 'source-serif', 'garamond'].includes(ff)) html.dataset.font = ff;
         } catch (e) {}
       })();
     </script>

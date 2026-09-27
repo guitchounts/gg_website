@@ -23,14 +23,17 @@ every push, and can be run by hand from the Actions tab.
 ## Design
 
 Three themes share one component layer, switched with `data-theme` on `<html>`
-(`src/styles/global.css`). With no attribute set, the site is `editorial` (light) and
-follows the OS dark-mode preference automatically, using the `retro` palette. The Art page
-is locked light via the `theme` prop on `Base.astro`. Force a theme for preview by appending
-`?theme=notebook`, `?theme=retro`, or `?theme=editorial` to any URL (persists in
-localStorage); `?theme=auto` clears the override.
+(`src/styles/global.css`). The site is `editorial` (light) everywhere; it does not follow OS
+dark mode. Force a theme for preview by appending `?theme=notebook`, `?theme=retro`, or
+`?theme=editorial` to any URL (persists in localStorage); `?theme=auto` clears the override.
+Type: body is Meno Text and display headings are Meno Banner, served from Adobe Fonts.
+Set `adobeFontsKitId` in `src/data/site.json` to the web-project ID from fonts.adobe.com
+(the part before `.css` in the kit URL). Without a kit ID the browser falls back to
+EB Garamond (body) and Fraunces (display), which are self-hosted. `?font=garamond`,
+`?font=source-serif`, `?font=literata`, `?font=newsreader` preview alternates; `?font=default` clears.
 
-Fonts are self-hosted via `@fontsource` packages: Newsreader (body), Fraunces (display),
-IBM Plex Mono (labels), Inter (notebook theme body).
+Self-hosted via `@fontsource`: EB Garamond, Fraunces, IBM Plex Mono (labels), Inter (notebook
+theme body); Source Serif 4, Literata, Newsreader installed as alternates.
 
 ## Local development
 
